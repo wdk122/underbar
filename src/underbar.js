@@ -289,6 +289,16 @@
   // already computed the result for the given argument and return that value
   // instead if possible.
   _.memoize = function(func) {
+    var prevCalls = {};
+    var result;
+
+    return function() {
+      if (!(arguments[0] in prevCalls)) {
+        prevCalls[arguments[0]] = func.apply(this, arguments);
+      }
+      return prevCalls[arguments[0]];
+    };
+
   };
 
   // Delays a function for the given number of milliseconds, and then calls
