@@ -328,6 +328,17 @@
   // input array. For a tip on how to make a copy of an array, see:
   // http://mdn.io/Array.prototype.slice
   _.shuffle = function(array) {
+    var shuffled = [];
+    var aCopy = array.slice(0, array.length);
+    while (aCopy.length !== 0) {
+      var elmToRemove = Math.floor(Math.random()*aCopy.length);
+      var newElm = aCopy.splice(elmToRemove, 1)[0];
+      shuffled.push(newElm);
+      //shuffled.push(aCopy[Math.floor(Math.random()*aCopy.length)]);
+    }
+    return shuffled;
+
+
   };
 
 
